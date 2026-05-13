@@ -15,7 +15,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.56.1",
     "@tailwindcss/vite": "^4.1.17",
-    "lucide-vue-next": "^0.577.0",
+    "lucide-vue-next": "^1.0.0",
     "papaparse": "^5.5.3",
     "pinia": "^3.0.4",
     "tailwindcss": "^4.1.17",
