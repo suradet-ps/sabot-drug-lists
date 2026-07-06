@@ -134,11 +134,11 @@ function handleSubmit(): void {
 
             <!-- Notes: หมายเหตุการเพิ่มยา (แยกจาก remarks ที่ใช้สำหรับเหตุผลการนำออก) -->
             <div class="space-y-1">
-              <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">
+              <label for="drug-notes" class="text-xs font-bold text-slate-500 uppercase tracking-wider">
                 หมายเหตุ / Notes
                 <span class="normal-case font-normal text-slate-400 ml-1">(ไม่จำเป็น)</span>
               </label>
-              <textarea
+              <textarea id="drug-notes"
                 v-model="form.notes" rows="2"
                 class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none resize-none transition-all text-sm"
                 placeholder="เช่น ยาทดแทน X, นำเข้าใหม่จากการประมูล 2568..."
