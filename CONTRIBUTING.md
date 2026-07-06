@@ -45,10 +45,10 @@ We gladly accept pull requests! If you're ready to contribute code, please follo
 
 To test your changes locally, follow the setup instructions in the [README.md](README.md):
 
-1. Install dependencies: `npm install`
+1. Install dependencies: `bun install`
 2. Configure `.env` with your Supabase credentials.
-3. Start the development server: `npm run dev`
-4. Run ESLint to ensure code matches formatting guidelines: `npm run lint`
+3. Start the development server: `bun run dev`
+4. Run ESLint to ensure code matches formatting guidelines: `bun run lint`
 
 ## Code Style Requirements
 

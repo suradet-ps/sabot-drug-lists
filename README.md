@@ -83,7 +83,7 @@ This project requires a Supabase project for its backend. Ensure your project ha
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) (v18.x or newer)
-- npm or yarn
+- [Bun](https://bun.sh/)
 
 ### Installation
 
@@ -97,7 +97,7 @@ This project requires a Supabase project for its backend. Ensure your project ha
 2. **Install dependencies**
 
    ```bash
-   npm install
+   bun install
    ```
 
 3. **Configure Environment**
@@ -117,7 +117,7 @@ This project requires a Supabase project for its backend. Ensure your project ha
 4. **Run Development Server**
 
    ```bash
-   npm run dev
+   bun run dev
    ```
 
    The app will be available at `http://localhost:5173`.
@@ -127,7 +127,7 @@ This project requires a Supabase project for its backend. Ensure your project ha
 To create a production-ready build:
 
 ```bash
-npm run build
+bun run build
 ```
 
 The artifacts will be in the `dist/` directory.
