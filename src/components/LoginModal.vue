@@ -75,8 +75,9 @@ async function handleSubmit(): Promise<void> {
         <div class="px-8 pb-8">
           <form class="space-y-4" @submit.prevent="handleSubmit">
             <div class="space-y-1.5">
-              <label class="text-sm font-semibold text-slate-700">อีเมล</label>
+              <label for="login-email" class="text-sm font-semibold text-slate-700">อีเมล</label>
               <input
+                id="login-email"
                 v-model="email" type="email"
                 class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all"
                 placeholder="your@email.com" required
@@ -84,8 +85,9 @@ async function handleSubmit(): Promise<void> {
             </div>
 
             <div class="space-y-1.5">
-              <label class="text-sm font-semibold text-slate-700">รหัสผ่าน</label>
+              <label for="login-password" class="text-sm font-semibold text-slate-700">รหัสผ่าน</label>
               <input
+                id="login-password"
                 v-model="password" type="password"
                 class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all"
                 placeholder="••••••••" required

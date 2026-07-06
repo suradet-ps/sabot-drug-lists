@@ -309,15 +309,17 @@ onMounted(() => {
           class="flex flex-col sm:flex-row items-end gap-3 pt-4 mt-4 border-t border-slate-100"
         >
           <div class="flex-1 min-w-0">
-            <label class="block text-xs font-medium text-slate-500 mb-1.5">จาก:</label>
+            <label for="date-from" class="block text-xs font-medium text-slate-500 mb-1.5">จาก:</label>
             <input
+              id="date-from"
               v-model="fromDate" type="date"
               class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
             >
           </div>
           <div class="flex-1 min-w-0">
-            <label class="block text-xs font-medium text-slate-500 mb-1.5">ถึง:</label>
+            <label for="date-to" class="block text-xs font-medium text-slate-500 mb-1.5">ถึง:</label>
             <input
+              id="date-to"
               v-model="toDate" type="date"
               class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
             >
@@ -422,6 +424,7 @@ onMounted(() => {
       <div class="relative mb-5">
         <Search class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" :size="16" />
         <input
+          id="activity-search"
           v-model="searchTerm" type="text" placeholder="ค้นหาชื่อยา, รหัสยา..."
           class="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 shadow-sm transition-all"
           @input="onSearchChange"

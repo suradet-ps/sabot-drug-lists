@@ -82,17 +82,19 @@ function handleSubmit(): void {
           <form class="space-y-4" @submit.prevent="handleSubmit">
             <div class="grid grid-cols-2 gap-4">
               <div class="space-y-1">
-                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">รหัสเวชภัณฑ์
+                <label for="drug-code" class="text-xs font-bold text-slate-500 uppercase tracking-wider">รหัสเวชภัณฑ์
                   *</label>
                 <input
+                  id="drug-code"
                   v-model="form.drug_code" type="text" required
                   class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all"
                 >
               </div>
               <div class="space-y-1">
-                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">ชื่อเวชภัณฑ์ (Trade
+                <label for="trade-name" class="text-xs font-bold text-slate-500 uppercase tracking-wider">ชื่อเวชภัณฑ์ (Trade
                   Name) *</label>
                 <input
+                  id="trade-name"
                   v-model="form.trade_name" type="text" required
                   class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all"
                 >
@@ -100,8 +102,9 @@ function handleSubmit(): void {
             </div>
 
             <div class="space-y-1">
-              <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Generic Name</label>
+              <label for="generic-name" class="text-xs font-bold text-slate-500 uppercase tracking-wider">Generic Name</label>
               <input
+                id="generic-name"
                 v-model="form.generic_name" type="text"
                 class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all"
               >
@@ -109,15 +112,17 @@ function handleSubmit(): void {
 
             <div class="grid grid-cols-3 gap-4">
               <div class="space-y-1">
-                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">บัญชี</label>
+                <label for="account" class="text-xs font-bold text-slate-500 uppercase tracking-wider">บัญชี</label>
                 <input
+                  id="account"
                   v-model="form.account" type="text"
                   class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-center focus:bg-white focus:border-blue-500 outline-none transition-all"
                 >
               </div>
               <div class="space-y-1 col-span-2">
-                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">ราคา OPD</label>
+                <label for="price-opd" class="text-xs font-bold text-slate-500 uppercase tracking-wider">ราคา OPD</label>
                 <input
+                  id="price-opd"
                   v-model.number="form.price_opd" type="number" step="0.01"
                   class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all"
                 >
@@ -125,8 +130,9 @@ function handleSubmit(): void {
             </div>
 
             <div class="space-y-1">
-              <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Category</label>
+              <label for="category" class="text-xs font-bold text-slate-500 uppercase tracking-wider">Category</label>
               <input
+                id="category"
                 v-model="form.category" type="text"
                 class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all"
               >
