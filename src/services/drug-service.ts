@@ -10,6 +10,8 @@ import type {
 } from '../types';
 import { supabase } from './supabase-client';
 
+const DRUGS_TABLE = 'drugs';
+
 export const drugService = {
   /**
    * ดึงข้อมูลรายการยาแบบ Pagination และ Filtering
@@ -26,7 +28,7 @@ export const drugService = {
       const to = from + pageSize - 1;
 
       // เริ่มสร้าง Query — ใช้ const chain แทน let reassignment เพื่อความถูกต้องด้านประเภท
-      const base = supabase.from('drugs').select('*', { count: 'exact' });
+      const base = supabase.from(DRUGS_TABLE).select('*', { count: 'exact' });
 
       // Logic แยกสถานะ (Active vs Decommissioned)
       const withStatus
@@ -91,7 +93,7 @@ export const drugService = {
    */
   async upsertDrugs(payload: DrugFormData | DrugFormData[]): Promise<true> {
     try {
-      const { error } = await supabase.from('drugs').upsert(payload, {
+      const { error } = await supabase.from(DRUGS_TABLE).upsert(payload, {
         onConflict: 'drug_code',
       });
 
@@ -116,7 +118,7 @@ export const drugService = {
         decommissioned_at: isActive ? null : new Date().toISOString(), // Logic เวลาอัตโนมัติ
       };
 
-      const { error } = await supabase.from('drugs').update(updatePayload).eq('id', id);
+      const { error } = await supabase.from(DRUGS_TABLE).update(updatePayload).eq('id', id);
 
       if (error)
         throw error;
@@ -168,7 +170,7 @@ export const drugService = {
 
       // Base query — กรองเฉพาะยาที่มี created_at อยู่ในช่วงที่กำหนด
       const base = supabase
-        .from('drugs')
+        .from(DRUGS_TABLE)
         .select('*', { count: 'exact' })
         .not('created_at', 'is', null)
         .gte('created_at', from)
@@ -213,7 +215,7 @@ export const drugService = {
 
       // Base query — กรองเฉพาะยาที่ไม่ active และมี decommissioned_at อยู่ในช่วงที่กำหนด
       const base = supabase
-        .from('drugs')
+        .from(DRUGS_TABLE)
         .select('*', { count: 'exact' })
         .eq('is_active', false)
         .not('decommissioned_at', 'is', null)
