@@ -71,7 +71,8 @@ function handleConfirm(): void {
 
             <div class="space-y-2">
               <label for="decommission-remarks" class="text-sm font-bold text-slate-700">ระบุเหตุผลในการนำออก *</label>
-              <textarea id="decommission-remarks"
+              <textarea
+                id="decommission-remarks"
                 v-model="remarks" rows="3" required
                 class="w-full p-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-red-100 focus:border-red-400 outline-none resize-none transition-all"
                 placeholder="เช่น บริษัทเลิกผลิต, ยาหมดอายุ, เปลี่ยนบริษัทประมูล..."
