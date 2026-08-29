@@ -1,158 +1,146 @@
-# Sabot Drug Lists (Hospital Drug Formulary Management System)
+# Sabot Drug Lists
 
-[![Vue.js](https://img.shields.io/badge/Vue.js-35495E?logo=vuedotjs&logoColor=4FC08D)](https://vuejs.org/)
-[![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
-[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white)](https://supabase.com/)
-[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Pinia](https://img.shields.io/badge/Pinia-FFD859?logo=pinia&logoColor=black)](https://pinia.vuejs.org/)
-[![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white)](https://vercel.com/)
-[![ESLint](https://img.shields.io/badge/ESLint-4B32C3?logo=eslint&logoColor=white)](https://eslint.org/)
-
-A modern, comprehensive **Progressive Web Application (PWA)** for managing a hospital's drug formulary. Built with **Vue 3**, **Vite**, and **Supabase**, this system streamlines the process of viewing, searching, adding, editing, and decommissioning drugs from the hospital's official list.
-
-## Key Features
-
-- **Progressive Web App (PWA)**: Fully installable on desktop and mobile devices with offline capabilities and auto-updates.
-- **Role-Based Access Control**: Secure access with distinct roles for **Administrators** (full CRUD access) and **Viewers** (read-only).
-- **Full Drug Lifecycle Management**:
-  - **Create**: Add new drugs to the formulary.
-  - **Read**: Advanced search and filtering capabilities.
-  - **Update**: Edit existing drug details.
-  - **Decommission**: Move drugs to a historical archive with required justification.
-  - **Recommission**: Restore drugs to the active list.
-- **Activity Logging & Audit Trail**:
-  - Track changes, user actions, and system statistics with a dedicated activity dashboard.
-- **High Performance**:
-  - **State Management**: Powered by [Pinia](https://pinia.vuejs.org/) for efficient and reactive data handling.
-  - **Server-Side Pagination**: Optimized for handling large datasets without performance degradation.
-  - **Instant Search**: Real-time filtering by drug code, trade name, generic name, or category.
-- **Powerful Admin Tools**:
-  - **Bulk CSV Import**: Rapidly populate or update the database using CSV files.
-- **Modern UI/UX**:
-  - **Responsive Design**: Built with [Tailwind CSS](https://tailwindcss.com/) for a mobile-first experience.
-  - **Clean Iconography**: Using [Lucide Vue](https://lucide.dev/) for consistent and beautiful icons.
-  - **Interactive Feedback**: Real-time toast notifications for user actions.
-
-## Technology Stack
-
-- **Frontend Framework**: [Vue 3](https://vuejs.org/) (Composition API, `<script setup>`)
-- **Build Tool**: [Vite](https://vitejs.dev/)
-- **State Management**: [Pinia](https://pinia.vuejs.org/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) (v4)
-- **Backend & Auth**: [Supabase](https://supabase.io/)
-- **PWA Support**: [Vite PWA Plugin](https://vite-pwa-org.netlify.app/)
-- **Icons**: [Lucide Vue](https://lucide.dev/)
-- **CSV Parsing**: [PapaParse](https://www.papaparse.com/)
-- **Linting**: [ESLint](https://eslint.org/) (Flat Config)
-- **CI/CD**: GitHub Actions
-- **Deployment**: [Vercel](https://vercel.com/) (Pre-configured SPA routing)
-
-## Supabase Backend Setup
-
-This project requires a Supabase project for its backend. Ensure your project has the following schema:
-
-1. **`drugs` Table**:
-   - `id` (uuid, PK)
-   - `drug_code` (text)
-   - `trade_name` (text)
-   - `generic_name` (text)
-   - `account` (text)
-   - `price_opd` (numeric)
-   - `category` (text)
-   - `is_active` (boolean, default: `true`)
-   - `remarks` (text)
-   - `notes` (text)
-   - `created_at` (timestamp)
-   - `decommissioned_at` (timestamp)
-
-2. **`drug_changelog` Table**:
-   - `id` (uuid, PK)
-   - `drug_id` (uuid, FK to `drugs.id`)
-   - `action` (text)
-   - `changed_by` (uuid, FK to `auth.users.id`)
-   - `changed_at` (timestamp)
-
-3. **`profiles_drugcupsabot` Table**:
-   - `id` (uuid, FK to `auth.users.id`)
-   - `role` (text: `'admin'` or `'viewer'`)
-
-4. **Authentication**: Enable Email/Password authentication.
-
-## Getting Started
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) (v18.x or newer)
-- [Bun](https://bun.sh/)
-
-### Installation
-
-1. **Clone the repository**
-
-   ```bash
-   git clone https://github.com/suradet-ps/sabot-drug-lists.git
-   cd sabot-drug-lists
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   bun install
-   ```
-
-3. **Configure Environment**
-   Create a `.env` file in the root directory:
-
-   ```bash
-   cp .env
-   ```
-
-   Update the `.env` file with your Supabase credentials:
-
-   ```env
-   VITE_SUPABASE_URL="YOUR_SUPABASE_URL"
-   VITE_SUPABASE_ANON_KEY="YOUR_SUPABASE_ANON_KEY"
-   ```
-
-4. **Run Development Server**
-
-   ```bash
-   bun run dev
-   ```
-
-   The app will be available at `http://localhost:5173`.
-
-### Building for Production
-
-To create a production-ready build:
-
-```bash
-bun run build
+```
+██████╗ ██████╗ ██╗   ██╗ ██████╗██╗     ██╗ ██████╗████████╗ ██████╗
+██╔══██╗██╔══██╗██║   ██║██╔════╝██║     ██║██╔════╝╚══██╔══╝██╔════╝
+██║  ██║██████╔╝██║   ██║██║  ███╗██║     ██║███████╗   ██║   ███████╗
+██║  ██║██╔══██╗██║   ██║██║   ██║██║     ██║╚════██║   ██║   ╚════██║
+██████╔╝██║  ██║╚██████╔╝╚██████╔╝███████╗██║██████╔╝   ██║   ██████╔╝
+╚═════╝ ╚═╝  ╚═╝ ╚═════╝  ╚═════╝╚══════╝╚═╝╚═════╝   ╚═╝╚═════╝
 ```
 
-The artifacts will be in the `dist/` directory.
+---
 
-## Project Structure
+## ◆ PULSE
 
-```text
-src/
-├── assets/          # Global styles (Tailwind) and static assets
-├── components/      # Reusable Vue components (UI elements, Modals)
-├── router/          # Vue Router configuration
-├── services/        # API calls and external service logic
-├── stores/          # Pinia state stores
-├── views/           # Page-level components
-├── App.vue          # Root component
-├── main.js          # Application entry point
-└── supabaseClient.js # Supabase client configuration
+A hospital formulary is a promise written in drug codes: what this
+hospital stands behind, at what price, and whether it is still
+dispensed. Sabot Drug Lists is the PWA that keeps that promise alive -
+view, search, add, edit, decommission with justification, recommission,
+and audit every change. Administrators hold the pen, viewers hold the
+list, and the changelog holds everyone accountable. Installable,
+offline-capable, searchable at the speed of typing.
+
+| Lifecycle ▣ | Roles ▣ | Audit ▣ | PWA ▣ |
+|---|---|---|---|
+
+*The formulary loop - manage, justify, audit, restore - is sealed.*
+
+> Built with Vue 3 + Pinia + Tailwind 4, backed by Supabase, shipped
+> as an installable PWA to Vercel.
+>
+> **suradet-ps**, artifact keeper
+
+---
+
+## ◆ IGNITION
+
+One runtime, four commands.
+
+```
+⟫ git clone https://github.com/suradet-ps/sabot-drug-lists.git
+⟫ cd sabot-drug-lists
+⟫ bun install
+⟫ cp .env
+⟫ bun run dev
 ```
 
-## Contributing
+Open [http://localhost:5173](http://localhost:5173).
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+The release artifact: `⟫ bun run build` - output in `dist/`.
 
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+<details>
+<summary>Supabase setup</summary>
+
+The backend needs three objects (see `schema.sql`):
+
+- `drugs` - the formulary: code, trade and generic names, account,
+  OPD price, category, active flag, remarks, notes, and
+  decommissioned-at timestamps.
+- `drug_changelog` - every action with its actor and timestamp.
+- `profiles_drugcupsabot` - the role table: `admin` or `viewer`.
+
+Enable Email/Password authentication; the anon key goes in `.env`:
+
+```
+VITE_SUPABASE_URL="YOUR_SUPABASE_URL"
+VITE_SUPABASE_ANON_KEY="YOUR_SUPABASE_ANON_KEY"
+```
+
+</details>
+
+---
+
+## ◆ ANATOMY
+
+One list, two roles, a changelog that never blinks.
+
+- **Lists** - server-side pagination keeps the formulary fast at any
+  size; instant search filters by drug code, trade name, generic name,
+  or category as you type.
+- **Manages** - the full lifecycle in one place: create, edit,
+  decommission into the historical archive with a required
+  justification, and recommission back into the active list.
+- **Gates** - role-based access: administrators hold full CRUD,
+  viewers hold read-only. The pen is never in both hands at once.
+- **Audits** - every change lands in `drug_changelog`; the activity
+  dashboard turns it into the record a pharmacy review can read.
+- **Imports** - bulk CSV import populates or updates the database in
+  one pass - a formulary migration without a thousand forms.
+- **Works anywhere** - an installable PWA with offline capability and
+  auto-updates; toast feedback for every action, responsive to every
+  screen.
+
+---
+
+## ◆ RITUALS
+
+**The core ceremony** - one drug's journey:
+
+1. Search by code, name, or category. The list answers as you type.
+2. Edit or create: the form takes the details, the toast confirms.
+3. Decommission when the drug leaves the list - the justification is
+   required before the archive accepts it.
+4. Audit: the activity dashboard shows who moved what, and when. A
+   recommission later brings the drug back with the history intact.
+
+**The ceremony of the justification** - no drug disappears silently.
+Decommissioning demands a reason, and the reason becomes part of the
+record - the archive remembers why, not just that.
+
+**The ceremony of the changelog** - every action has an actor and a
+timestamp. The formulary may change hands, but it never changes
+without a trace.
+
+---
+
+## ◆ ECHOES
+
+**Where this artifact is heading**
+
+```
+list     ▸ paginated formulary, instant multi-field search ─────────── ▸ sealed
+lifecycle ▸ create, edit, decommission, recommission ────────────────── ▸ sealed
+roles    ▸ admin CRUD vs viewer read-only ──────────────────────────── ▸ sealed
+audit    ▸ changelog + activity dashboard ──────────────────────────── ▸ sealed
+import   ▸ bulk CSV ────────────────────────────────────────────────── ▸ sealed
+offline  ▸ installable PWA, auto-updates ────────────────────────────── ▸ sealed
+```
+
+**Raising the artifact** - the schema is `schema.sql`; the
+contribution rules live in `CONTRIBUTING.md`; the security posture in
+`SECURITY.md`. Open an issue first to discuss a change.
+
+**Status** - CI gates every push on the way to Vercel.
+[Watch the gates](.github/workflows).
+
+---
+
+```
+  ─────────────────────────────────────────
+   A formulary without a changelog
+   is a promise without a memory.
+  ─────────────────────────────────────────
+```
+
+Distributed under the [MIT License](LICENSE).
